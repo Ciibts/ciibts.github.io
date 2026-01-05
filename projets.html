@@ -34,25 +34,13 @@
 
     /* ANIMATIONS */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* NAVBAR */
@@ -70,9 +58,7 @@
       animation: fadeDown 1s ease forwards;
     }
 
-    .logo img {
-      height: 40px;
-    }
+    .logo img { height: 40px; }
 
     nav ul {
       list-style: none;
@@ -163,9 +149,18 @@
       font-weight: 500;
     }
 
+    .project-card h3 a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .project-card h3 a:hover {
+      color: #00d4ff;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
-
       nav {
         flex-direction: column;
         gap: 15px;
@@ -235,7 +230,7 @@
         </div>
 
         <div class="project-card">
-          <h3>Technologies Spatiales</h3>
+          <h3><a href="xera.html">Technologies Spatiales</a></h3>
           <p>Solutions innovantes pour l’exploration et les systèmes spatiaux.</p>
         </div>
 
