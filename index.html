@@ -16,19 +16,9 @@
     }
 
     body {
-      background: #1c1e22;
+      background: black;
       color: white;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      overflow-x: hidden;
     }
 
     /* NAVBAR */
@@ -40,10 +30,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
       z-index: 1000;
-      animation: fadeDown 1s ease forwards;
     }
 
     .logo img { height: 40px; }
@@ -79,32 +68,41 @@
       width: 100%;
     }
 
-    /* HERO */
+    /* HERO VIDEO */
     header {
-      height: 100vh;
-      background: url("https://cdn.pixabay.com/photo/2016/11/18/15/57/space-1837306_1280.jpg") center/cover no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
       position: relative;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    header::before {
-      content: "";
+    .video-bg {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.6);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: -1;
     }
 
     .hero-content {
-      position: relative;
-      animation: fadeUp 1.2s ease forwards;
-      max-width: 800px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
     }
 
     .hero-content h1 {
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 300;
       letter-spacing: 6px;
       margin-bottom: 20px;
@@ -114,39 +112,41 @@
       font-size: 18px;
       opacity: 0.85;
       margin-bottom: 40px;
+      max-width: 800px;
     }
 
-    /* BOUTON UNIQUE */
     .btn {
-      padding: 20px 50px;
+      padding: 18px 50px;
       border: 2px solid white;
       background: transparent;
       color: white;
       text-decoration: none;
       text-transform: uppercase;
-      font-size: 16px;
-      letter-spacing: 1px;
+      font-size: 15px;
+      letter-spacing: 2px;
       transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
     }
 
     .btn:hover {
       background: white;
       color: black;
-      transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(255,255,255,0.35);
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .hero-content h1 { font-size: 42px; }
-      .hero-content p { font-size: 16px; }
-      .btn { padding: 15px 40px; font-size: 14px; }
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 25px;
+      }
+
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -166,13 +166,16 @@
 </nav>
 
 <header>
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="videos/hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="video-overlay"></div>
+
   <div class="hero-content">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
-
-    <div class="hero-buttons">
-      <a href="projets.html" class="btn">Découvrir</a>
-    </div>
+    <a href="projets.html" class="btn">Découvrir</a>
   </div>
 </header>
 
