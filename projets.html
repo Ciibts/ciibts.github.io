@@ -17,7 +17,7 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* BACKGROUND GRADIENT ANIMÉ */
+    /* BACKGROUND BODY */
     body {
       min-height: 100vh;
       color: white;
@@ -94,7 +94,7 @@
     /* CONTENT */
     .content {
       padding: 160px 80px 80px;
-      max-width: 1000px;
+      max-width: 1100px;
       animation: fadeUp 1.2s ease forwards;
     }
 
@@ -123,6 +123,30 @@
       border-left: 3px solid rgba(255,255,255,0.3);
     }
 
+    /* SECTION PROJETS AVEC IMAGE */
+    .section.projets-bg {
+      position: relative;
+      padding: 50px 40px;
+      border-radius: 20px;
+      border-left: none;
+      background: url('3a2b36d1-d5bc-468b-b16b-9115f5614dc5.png') center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .section.projets-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+    }
+
+    .section.projets-bg * {
+      position: relative;
+      z-index: 1;
+    }
+
     /* PROJECT CARDS */
     .projects {
       display: grid;
@@ -132,7 +156,7 @@
     }
 
     .project-card {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       padding: 30px;
       border-radius: 16px;
       backdrop-filter: blur(10px);
@@ -141,7 +165,7 @@
 
     .project-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
     .project-card h3 {
@@ -152,7 +176,6 @@
     .project-card h3 a {
       color: white;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
 
     .project-card h3 a:hover {
@@ -175,6 +198,10 @@
       .section {
         padding-left: 0;
         border-left: none;
+      }
+
+      .section.projets-bg {
+        padding: 35px 25px;
       }
 
       h1 {
@@ -220,7 +247,8 @@
       </p>
     </div>
 
-    <div class="section">
+    <!-- SECTION AVEC IMAGE -->
+    <div class="section projets-bg">
       <h2>Projets en développement</h2>
 
       <div class="projects">
