@@ -5,53 +5,47 @@
   <title>CIIBTS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* RESET */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Montserrat', sans-serif;
     }
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Navbar animation */
-nav {
-  animation: fadeDown 1s ease forwards;
-}
-
-/* Hero animation */
-.hero-content {
-  animation: fadeUp 1.2s ease forwards;
-}
 
     body {
       background: #1c1e22;
-      color: #fff;
+      color: white;
     }
 
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* NAVBAR */
     nav {
       position: fixed;
       top: 0;
@@ -63,12 +57,7 @@ nav {
       background: rgba(0,0,0,0.6);
       backdrop-filter: blur(10px);
       z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+      animation: fadeDown 1s ease forwards;
     }
 
     .logo img {
@@ -85,9 +74,33 @@ nav {
       color: white;
       text-decoration: none;
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      opacity: 0.85;
+      position: relative;
+      transition: opacity 0.3s ease;
     }
 
+    nav ul li a:hover {
+      opacity: 1;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* HEADER / HERO */
     header {
       height: 100vh;
       background: url("https://cdn.pixabay.com/photo/2016/11/18/15/57/space-1837306_1280.jpg") center/cover no-repeat;
@@ -108,6 +121,7 @@ nav {
     .hero-content {
       position: relative;
       max-width: 900px;
+      animation: fadeUp 1.2s ease forwards;
     }
 
     .hero-content img {
@@ -116,7 +130,9 @@ nav {
     }
 
     .hero-content h1 {
-      font-size: 48px;
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: 6px;
       margin-bottom: 20px;
     }
 
@@ -132,67 +148,56 @@ nav {
       justify-content: center;
     }
 
-.btn {
-  padding: 15px 35px;
-  border: 2px solid white;
-  background: transparent;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-  transform: translateY(-4px);
-}
-
-}
-
-.btn:hover {
-  background: white;
-  color: black;
-  transform: translateY(-4px);
-}
-
+    /* BUTTONS — PREMIUM */
+    .btn {
+      padding: 15px 35px;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
     }
 
     .btn:hover {
       background: white;
       color: black;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(255,255,255,0.35);
     }
   </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">
-    <img src="logo-ciibts.png" alt="CIIBTS">
-  </div>
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="infos.html">Informations</a></li>
-    <li><a href="contact.html">Contactez-nous</a></li>
-  </ul>
-</nav>
-
-<header>
-  <div class="hero-content">
-    <img src="logo-ciibts.png" alt="CIIBTS">
-    <h1>CIIBTS</h1>
-    <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
-
-    <div class="hero-buttons">
-      <a href="infos.html" class="btn">Informations</a>
-      <a href="contact.html" class="btn">Contactez-nous</a>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <img src="logo-ciibts.png" alt="CIIBTS">
     </div>
-  </div>
-</header>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="infos.html">Informations</a></li>
+      <li><a href="contact.html">Contactez-nous</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero-content">
+      <img src="logo-ciibts.png" alt="CIIBTS">
+      <h1>CIIBTS</h1>
+      <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
+
+      <div class="hero-buttons">
+        <a href="infos.html" class="btn">Informations</a>
+        <a href="contact.html" class="btn">Contactez-nous</a>
+      </div>
+    </div>
+  </header>
 
 </body>
 </html>
