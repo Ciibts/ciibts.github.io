@@ -5,11 +5,9 @@
   <title>CIIBTS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* RESET */
     * {
       margin: 0;
       padding: 0;
@@ -24,25 +22,13 @@
 
     /* ANIMATIONS */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* NAVBAR */
@@ -60,9 +46,7 @@
       animation: fadeDown 1s ease forwards;
     }
 
-    .logo img {
-      height: 40px;
-    }
+    .logo img { height: 40px; }
 
     nav ul {
       list-style: none;
@@ -78,11 +62,6 @@
       letter-spacing: 2px;
       opacity: 0.85;
       position: relative;
-      transition: opacity 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      opacity: 1;
     }
 
     nav ul li a::after {
@@ -100,16 +79,15 @@
       width: 100%;
     }
 
-    /* HEADER / HERO */
+    /* HERO */
     header {
       height: 100vh;
       background: url("https://cdn.pixabay.com/photo/2016/11/18/15/57/space-1837306_1280.jpg") center/cover no-repeat;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       text-align: center;
       position: relative;
-      padding: 0 20px;
     }
 
     header::before {
@@ -121,7 +99,6 @@
 
     .hero-content {
       position: relative;
-      max-width: 900px;
       animation: fadeUp 1.2s ease forwards;
     }
 
@@ -134,13 +111,12 @@
       font-size: 56px;
       font-weight: 300;
       letter-spacing: 6px;
-      margin-bottom: 20px;
     }
 
     .hero-content p {
+      margin-top: 20px;
       font-size: 18px;
       opacity: 0.85;
-      line-height: 1.6;
     }
 
     .hero-buttons {
@@ -150,7 +126,6 @@
       justify-content: center;
     }
 
-    /* BUTTONS — PREMIUM */
     .btn {
       padding: 15px 35px;
       border: 2px solid white;
@@ -168,73 +143,36 @@
       background: white;
       color: black;
       transform: translateY(-4px);
-      box-shadow: 0 15px 40px rgba(255,255,255,0.35);
-    }
-
-    /* =========================
-       RESPONSIVE MOBILE
-    ========================= */
-    @media (max-width: 768px) {
-
-      nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 25px;
-      }
-
-      nav ul {
-        gap: 20px;
-      }
-
-      .hero-content h1 {
-        font-size: 36px;
-        letter-spacing: 4px;
-      }
-
-      .hero-content p {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">
-      <img src="logo-ciibts.png" alt="CIIBTS">
-    </div>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="infos.html">Informations</a></li>
-      <li><a href="contact.html">Contactez-nous</a></li>
-    </ul>
-  </nav>
+<nav>
+  <div class="logo">
+    <img src="logo-ciibts.png" alt="CIIBTS">
+  </div>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="infos.html">Informations</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <header>
-    <div class="hero-content">
-      <img src="logo-ciibts.png" alt="CIIBTS">
-      <h1>CIIBTS</h1>
-      <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
+<header>
+  <div class="hero-content">
+    <img src="logo-ciibts.png" alt="CIIBTS">
+    <h1>CIIBTS</h1>
+    <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
 
-      <div class="hero-buttons">
-        <a href="infos.html" class="btn">Informations</a>
-        <a href="contact.html" class="btn">Contactez-nous</a>
-      </div>
+    <div class="hero-buttons">
+      <a href="infos.html" class="btn">Informations</a>
+      <a href="projets.html" class="btn">Projets</a>
     </div>
-  </header>
+  </div>
+</header>
 
 </body>
 </html>
