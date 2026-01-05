@@ -13,6 +13,22 @@
       height: 100vh;
       background: url("contact-bg.jpg") center/cover no-repeat;
       position: relative;
+      .content {
+  animation: fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+      
     }
 
     body::before {
