@@ -109,6 +109,7 @@
       justify-content: center;
       text-align: center;
       position: relative;
+      padding: 0 20px;
     }
 
     header::before {
@@ -139,6 +140,7 @@
     .hero-content p {
       font-size: 18px;
       opacity: 0.85;
+      line-height: 1.6;
     }
 
     .hero-buttons {
@@ -167,6 +169,41 @@
       color: black;
       transform: translateY(-4px);
       box-shadow: 0 15px 40px rgba(255,255,255,0.35);
+    }
+
+    /* =========================
+       RESPONSIVE MOBILE
+    ========================= */
+    @media (max-width: 768px) {
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 25px;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+        letter-spacing: 4px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
