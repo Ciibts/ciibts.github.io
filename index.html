@@ -18,10 +18,8 @@
     body {
       background: black;
       color: white;
-      overflow-x: hidden;
     }
 
-    /* NAVBAR */
     nav {
       position: fixed;
       top: 0;
@@ -30,7 +28,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.55);
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
       z-index: 1000;
     }
@@ -39,8 +37,6 @@
       height: 46px;
       width: auto;
       display: block;
-      opacity: 0.95;
-      filter: drop-shadow(0 0 8px rgba(255,255,255,0.25));
     }
 
     nav ul {
@@ -55,122 +51,42 @@
       text-transform: uppercase;
       font-size: 13px;
       letter-spacing: 2px;
-      opacity: 0.85;
-      position: relative;
     }
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 2px;
-      background: white;
-      transition: width 0.3s ease;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* HERO */
     header {
-      position: relative;
-      width: 100%;
       height: 100vh;
+      position: relative;
       overflow: hidden;
     }
 
-    /* VIDEO */
     .video-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 1;
     }
 
-    /* OVERLAY ANIMÉ */
-    @keyframes overlayMove {
-      0% {
-        background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), rgba(0,0,0,0.85));
-      }
-      50% {
-        background: radial-gradient(circle at 80% 70%, rgba(255,255,255,0.12), rgba(0,0,0,0.9));
-      }
-      100% {
-        background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), rgba(0,0,0,0.85));
-      }
-    }
-
-    .video-overlay {
+    .overlay {
       position: absolute;
       inset: 0;
-      z-index: 2;
-      animation: overlayMove 20s ease-in-out infinite;
+      background: rgba(0,0,0,0.65);
     }
 
-    /* CONTENU */
-    .hero-content {
+    .hero {
       position: relative;
-      z-index: 3;
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 20px;
     }
 
-    .hero-content h1 {
+    h1 {
       font-size: 64px;
-      font-weight: 300;
       letter-spacing: 6px;
-      margin-bottom: 20px;
-    }
-
-    .hero-content p {
-      font-size: 18px;
-      opacity: 0.85;
-      margin-bottom: 40px;
-      max-width: 800px;
-    }
-
-    .btn {
-      padding: 18px 50px;
-      border: 2px solid white;
-      background: transparent;
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 15px;
-      letter-spacing: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: white;
-      color: black;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 25px;
-      }
-
-      .hero-content h1 {
-        font-size: 42px;
-      }
-
-      .hero-content p {
-        font-size: 16px;
-      }
     }
   </style>
 </head>
@@ -179,6 +95,7 @@
 
 <nav>
   <div class="logo">
+    <img src="logo-ciibts-transparent.png" alt="CIIBTS">
   </div>
   <ul>
     <li><a href="index.html">Accueil</a></li>
@@ -189,16 +106,14 @@
 </nav>
 
 <header>
-  <video class="video-bg" autoplay muted loop playsinline preload="auto">
+  <video class="video-bg" autoplay muted loop playsinline>
     <source src="videos/hero.mp4" type="video/mp4">
   </video>
+  <div class="overlay"></div>
 
-  <div class="video-overlay"></div>
-
-  <div class="hero-content">
+  <div class="hero">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
-    <a href="projets.html" class="btn">Découvrir</a>
   </div>
 </header>
 
