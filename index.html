@@ -8,180 +8,220 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+body{background:black;color:white;overflow-x:hidden;}
+
+/* ================= LOADER ================= */
+#loader{
+  position:fixed;
+  inset:0;
+  background:black;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:opacity 1s ease, visibility 1s ease;
 }
 
-body {
-  background: black;
-  color: white;
-  overflow-x: hidden;
+#loader.hidden{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-stars{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(white 1px, transparent 1px);
+  background-size:3px 3px;
+  opacity:.15;
+  animation:starsMove 60s linear infinite;
+}
+
+@keyframes starsMove{
+  from{background-position:0 0;}
+  to{background-position:1000px 1000px;}
+}
+
+.orbit{
+  width:140px;
+  height:140px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%;
+  animation:rotate 6s linear infinite;
+  position:relative;
+}
+
+.orbit::after{
+  content:"";
+  position:absolute;
+  top:-5px;
+  left:50%;
+  width:10px;
+  height:10px;
+  background:#00d4ff;
+  border-radius:50%;
+  box-shadow:0 0 15px #00d4ff;
+  transform:translateX(-50%);
+}
+
+@keyframes rotate{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
+.loader-text{
+  margin-top:40px;
+  text-align:center;
+  letter-spacing:3px;
+}
+
+.loader-text h1{
+  font-weight:300;
+  font-size:32px;
+}
+
+.loader-text p{
+  margin-top:10px;
+  font-size:14px;
+  opacity:.7;
 }
 
 /* ================= NAV ================= */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 16px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:16px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
-.logo img {
-  height: 42px;
+.logo img{height:42px;}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
 }
 
-/* MENU DESKTOP */
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  opacity: 0.85;
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.85;
 }
 
 /* BURGER */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
+.burger{display:none;flex-direction:column;gap:6px;cursor:pointer;}
+.burger span{width:26px;height:2px;background:white;}
 
-.burger span {
-  width: 26px;
-  height: 2px;
-  background: white;
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  transform:translateY(-100%);
+  transition:.4s ease;
+  z-index:999;
 }
-
-/* MENU MOBILE */
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  transform: translateY(-100%);
-  transition: 0.4s ease;
-  z-index: 999;
+.mobile-menu a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:3px;
+  text-transform:uppercase;
 }
-
-.mobile-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.mobile-menu.active {
-  transform: translateY(0);
-}
+.mobile-menu.active{transform:translateY(0);}
 
 /* ================= HERO ================= */
-header {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+header{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
 }
 
-.video-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
+.video-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
 }
 
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), rgba(0,0,0,0.85));
-  z-index: 2;
+.video-overlay{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 40%, rgba(255,255,255,.08), rgba(0,0,0,.85));
+  z-index:2;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 3;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
+.hero-content{
+  position:relative;
+  z-index:3;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
 }
 
-.hero-content h1 {
-  font-size: 64px;
-  letter-spacing: 6px;
-  font-weight: 300;
+.hero-content h1{
+  font-size:64px;
+  letter-spacing:6px;
+  font-weight:300;
 }
 
-.hero-content p {
-  margin: 20px 0 40px;
-  max-width: 800px;
-  opacity: 0.85;
+.hero-content p{
+  margin:20px 0 40px;
+  max-width:800px;
+  opacity:.85;
 }
 
-/* BOUTON */
-.btn {
-  padding: 16px 42px;
-  border: 2px solid white;
-  color: white;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: 0.3s;
+.btn{
+  padding:16px 42px;
+  border:2px solid white;
+  color:white;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.3s;
 }
+.btn:hover{background:white;color:black;}
 
-.btn:hover {
-  background: white;
-  color: black;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 900px) {
-  nav ul {
-    display: none;
-  }
-
-  .burger {
-    display: flex;
-  }
-
-  .hero-content h1 {
-    font-size: 42px;
-    letter-spacing: 4px;
-  }
-
-  .hero-content p {
-    font-size: 15px;
-  }
+@media(max-width:900px){
+  nav ul{display:none;}
+  .burger{display:flex;}
+  .hero-content h1{font-size:42px;letter-spacing:4px;}
+  .hero-content p{font-size:15px;}
 }
 </style>
 </head>
 
 <body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-stars"></div>
+  <div class="orbit"></div>
+  <div class="loader-text">
+    <h1>CIIBTS</h1>
+    <p>Initialisation des systèmes orbitaux…</p>
+  </div>
+</div>
 
 <!-- MENU MOBILE -->
 <div class="mobile-menu" id="mobileMenu">
@@ -204,9 +244,7 @@ header {
   </ul>
 
   <div class="burger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
@@ -214,7 +252,6 @@ header {
   <video class="video-bg" autoplay muted loop playsinline>
     <source src="videos/hero.mp4" type="video/mp4">
   </video>
-
   <div class="video-overlay"></div>
 
   <div class="hero-content">
@@ -225,10 +262,17 @@ header {
 </header>
 
 <script>
-function toggleMenu() {
+function toggleMenu(){
   document.getElementById("mobileMenu").classList.toggle("active");
 }
+
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hidden");
+  },1200);
+});
 </script>
 
 </body>
 </html>
+
