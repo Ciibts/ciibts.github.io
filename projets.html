@@ -1,216 +1,196 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Projets & Vision – CIIBTS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Projets & Vision – CIIBTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
 
-    body {
-      min-height: 100vh;
-      color: white;
-      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1e22);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
-      overflow-x: hidden;
-    }
+body {
+  color: white;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0b0f14);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  overflow-x: hidden;
+}
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-    }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 2px;
-      opacity: 0.85;
-      position: relative;
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 2px;
-      background: white;
-      transition: width 0.3s ease;
-    }
+/* CONTENU */
+.content {
+  padding: 140px 30px 100px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
+h1 {
+  font-size: 46px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
+  text-align: center;
+}
 
-    .content {
-      padding: 160px 80px 100px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.section {
+  margin-bottom: 70px;
+  max-width: 900px;
+  margin-inline: auto;
+}
 
-    h1 {
-      font-size: 52px;
-      font-weight: 300;
-      letter-spacing: 5px;
-      margin-bottom: 50px;
-    }
+.section h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
+.section p {
+  font-size: 17px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.8;
-      opacity: 0.9;
-    }
+/* ===== SECTION SPATIALE ===== */
+.projects-space {
+  position: relative;
+  margin-top: 80px;
+  padding: 100px 30px 120px;
+  border-radius: 24px;
+  background: radial-gradient(circle at top, #0b1d2a, #000);
+  overflow: hidden;
+}
 
-    .section {
-      margin-bottom: 80px;
-      padding-left: 25px;
-      border-left: 3px solid rgba(255,255,255,0.3);
-    }
+.projects-space h2 {
+  text-align: center;
+  margin-bottom: 100px;
+  letter-spacing: 3px;
+}
 
-    /* ===== SECTION PROJETS SPATIALE ===== */
-    .projects-space {
-      position: relative;
-      margin-top: 80px;
-      padding: 120px 40px;
-      border-radius: 24px;
-      background: radial-gradient(circle at top, #0b1d2a, #000);
-      overflow: hidden;
-    }
+/* ORBITES */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
 
-    .projects-space h2 {
-      text-align: center;
-      margin-bottom: 120px;
-      letter-spacing: 3px;
-    }
+.orbit-1 { width: 420px; height: 420px; animation-duration: 60s; }
+.orbit-2 { width: 700px; height: 700px; animation-duration: 120s; }
 
-    /* ORBITES */
-    .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50%;
-      animation: rotate linear infinite;
-    }
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
-    .orbit-1 {
-      width: 500px;
-      height: 500px;
-      animation-duration: 60s;
-    }
+/* SATELLITES */
+.satellite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #00d4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,212,255,0.9);
+  cursor: pointer;
+  z-index: 3;
+}
 
-    .orbit-2 {
-      width: 850px;
-      height: 850px;
-      animation-duration: 120s;
-    }
+.sat-1 { transform: translate(210px, 0); }
+.sat-2 { transform: translate(-280px, -120px); }
+.sat-3 { transform: translate(0, 340px); }
 
-    @keyframes rotate {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+/* CARTES */
+.projects-grid {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
 
-    /* SATELLITES */
-    .satellite {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 14px;
-      height: 14px;
-      background: #00d4ff;
-      border-radius: 50%;
-      box-shadow: 0 0 18px rgba(0,212,255,0.9);
-      cursor: pointer;
-      z-index: 3;
-      transition: transform 0.3s ease;
-    }
+.project-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 28px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: 0.35s;
+}
 
-    .sat-1 { transform: translate(250px, 0); }
-    .sat-2 { transform: translate(-350px, -150px); }
-    .sat-3 { transform: translate(0, 420px); }
+.project-card.active {
+  box-shadow: 0 0 40px rgba(0,212,255,0.8);
+  transform: translateY(-8px);
+}
 
-    .satellite:hover {
-      transform: scale(1.8);
-    }
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  h1 { font-size: 36px; }
 
-    /* CARTES PROJETS */
-    .projects-grid {
-      position: relative;
-      z-index: 4;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
-    }
+  .projects-space {
+    padding: 80px 20px 100px;
+  }
 
-    .project-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 30px;
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
-    }
+  .orbit {
+    opacity: 0.35;
+  }
 
-    .project-card.active {
-      box-shadow: 0 0 35px rgba(0,212,255,0.7);
-      transform: translateY(-10px);
-    }
+  .orbit-2 {
+    display: none;
+  }
 
-    @media (max-width: 768px) {
-      .content {
-        padding: 130px 25px;
-        text-align: center;
-      }
-
-      .section {
-        border-left: none;
-        padding-left: 0;
-      }
-    }
-  </style>
+  .satellite {
+    width: 18px;
+    height: 18px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <div></div>
   <ul>
     <li><a href="index.html">Accueil</a></li>
     <li><a href="infos.html">Informations</a></li>
@@ -221,55 +201,54 @@
 
 <div class="content">
 
-  <h1>Vision & Projets</h1>
+<h1>Vision & Projets</h1>
 
-  <div class="section">
-    <h2>Notre vision</h2>
-    <p>
-      Le CIIBTS ambitionne de devenir un acteur international de référence
-      dans la convergence entre biotechnologie, innovation technologique
-      et exploration spatiale.
-    </p>
+<div class="section">
+  <h2>Notre vision</h2>
+  <p>
+    Le CIIBTS ambitionne de devenir un acteur international de référence
+    dans la convergence entre biotechnologie, innovation technologique
+    et exploration spatiale.
+  </p>
+</div>
+
+<div class="section">
+  <h2>Axes stratégiques</h2>
+  <p>
+    Recherche avancée • Innovation durable • Coopération internationale •
+    Technologies de rupture • Applications spatiales et médicales
+  </p>
+</div>
+
+<section class="projects-space">
+
+<h2>Projets en développement</h2>
+
+<div class="orbit orbit-1"></div>
+<div class="orbit orbit-2"></div>
+
+<div class="satellite sat-1" data-project="0"></div>
+<div class="satellite sat-2" data-project="1"></div>
+<div class="satellite sat-3" data-project="2"></div>
+
+<div class="projects-grid">
+  <div class="project-card">
+    <h3>BioTech Santé</h3>
+    <p>Recherche et innovation dans les technologies médicales avancées.</p>
   </div>
 
-  <div class="section">
-    <h2>Axes stratégiques</h2>
-    <p>
-      Recherche avancée • Innovation durable • Coopération internationale •
-      Technologies de rupture • Applications spatiales et médicales
-    </p>
+  <div class="project-card">
+    <h3><a href="xera.html" style="color:white;text-decoration:none;">Technologies Spatiales</a></h3>
+    <p>Systèmes orbitaux, satellites et exploration spatiale.</p>
   </div>
 
-  <!-- 🚀 SECTION SPATIALE -->
-  <section class="projects-space">
+  <div class="project-card">
+    <h3>Innovation Durable</h3>
+    <p>Technologies responsables à impact global.</p>
+  </div>
+</div>
 
-    <h2>Projets en développement</h2>
-
-    <div class="orbit orbit-1"></div>
-    <div class="orbit orbit-2"></div>
-
-    <div class="satellite sat-1" data-project="0"></div>
-    <div class="satellite sat-2" data-project="1"></div>
-    <div class="satellite sat-3" data-project="2"></div>
-
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>BioTech Santé</h3>
-        <p>Recherche et innovation dans les technologies médicales avancées.</p>
-      </div>
-
-      <div class="project-card">
-        <h3><a href="xera.html" style="color:white;text-decoration:none;">Technologies Spatiales</a></h3>
-        <p>Systèmes orbitaux, satellites et exploration spatiale.</p>
-      </div>
-
-      <div class="project-card">
-        <h3>Innovation Durable</h3>
-        <p>Technologies responsables à impact global.</p>
-      </div>
-    </div>
-
-  </section>
+</section>
 
 </div>
 
@@ -278,11 +257,9 @@ const sats = document.querySelectorAll(".satellite");
 const cards = document.querySelectorAll(".project-card");
 
 sats.forEach(sat => {
-  sat.addEventListener("mouseenter", () => {
-    cards[sat.dataset.project].classList.add("active");
-  });
-  sat.addEventListener("mouseleave", () => {
+  sat.addEventListener("click", () => {
     cards.forEach(c => c.classList.remove("active"));
+    cards[sat.dataset.project].classList.add("active");
   });
 });
 </script>
