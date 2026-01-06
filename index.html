@@ -21,12 +21,12 @@ body {
   overflow-x: hidden;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 50px;
+  padding: 16px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,9 +36,10 @@ nav {
 }
 
 .logo img {
-  height: 46px;
+  height: 42px;
 }
 
+/* MENU DESKTOP */
 nav ul {
   list-style: none;
   display: flex;
@@ -54,14 +55,54 @@ nav ul li a {
   opacity: 0.85;
 }
 
-/* HERO */
+/* BURGER */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 26px;
+  height: 2px;
+  background: white;
+}
+
+/* MENU MOBILE */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  transform: translateY(-100%);
+  transition: 0.4s ease;
+  z-index: 999;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+}
+
+/* ================= HERO ================= */
 header {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
 
-/* VIDEO */
 .video-bg {
   position: absolute;
   inset: 0;
@@ -69,52 +110,25 @@ header {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  transition: transform 0.3s ease-out;
 }
 
-/* OVERLAY CINÉMATIQUE */
 .video-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), rgba(0,0,0,0.85));
   z-index: 2;
-  transition: transform 0.3s ease-out;
 }
 
-/* PARTICULES */
-#particles {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* ORBITES */
-.orbit {
-  position: absolute;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 50%;
-  animation: rotate 60s linear infinite;
-}
-
-.orbit.one { width: 600px; height: 600px; top: 20%; left: 50%; }
-.orbit.two { width: 900px; height: 900px; top: 10%; left: 40%; animation-duration: 90s; }
-
-@keyframes rotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* CONTENU */
 .hero-content {
   position: relative;
-  z-index: 4;
+  z-index: 3;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 20px;
 }
 
 .hero-content h1 {
@@ -131,7 +145,7 @@ header {
 
 /* BOUTON */
 .btn {
-  padding: 18px 50px;
+  padding: 16px 42px;
   border: 2px solid white;
   color: white;
   text-decoration: none;
@@ -145,96 +159,75 @@ header {
   color: black;
 }
 
-/* FUSÉE */
-.rocket {
-  position: absolute;
-  bottom: -120px;
-  right: 10%;
-  width: 60px;
-  opacity: 0.8;
-  z-index: 4;
-  transition: transform 0.3s ease-out;
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  nav ul {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="infos.html">Informations</a>
+  <a href="projets.html">Projets</a>
+  <a href="contact.html">Contact</a>
+</div>
+
 <nav>
   <div class="logo">
     <img src="logo-ciibts-transparent.png" alt="CIIBTS">
   </div>
+
   <ul>
     <li><a href="index.html">Accueil</a></li>
     <li><a href="infos.html">Informations</a></li>
     <li><a href="projets.html">Projets</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </nav>
 
 <header>
-
   <video class="video-bg" autoplay muted loop playsinline>
     <source src="videos/hero.mp4" type="video/mp4">
   </video>
 
   <div class="video-overlay"></div>
 
-  <canvas id="particles"></canvas>
-
-  <div class="orbit one"></div>
-  <div class="orbit two"></div>
-
-  <img src="rocket.png" class="rocket" alt="rocket">
-
   <div class="hero-content">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
     <a href="projets.html" class="btn">Découvrir</a>
   </div>
-
 </header>
 
 <script>
-// PARTICULES
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-let w, h, particles;
-
-function resize() {
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
-  particles = Array.from({length: 80}, () => ({
-    x: Math.random()*w,
-    y: Math.random()*h,
-    r: Math.random()*1.5+0.5,
-    v: Math.random()*0.3+0.1
-  }));
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("active");
 }
-window.addEventListener("resize", resize);
-resize();
-
-function animate() {
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle = "rgba(255,255,255,0.6)";
-  particles.forEach(p=>{
-    p.y -= p.v;
-    if(p.y < 0) p.y = h;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-  });
-  requestAnimationFrame(animate);
-}
-animate();
-
-// SCROLL CINÉMATIQUE + FUSÉE
-window.addEventListener("scroll", () => {
-  const s = window.scrollY;
-  document.querySelector(".video-bg").style.transform = `scale(${1 + s/3000})`;
-  document.querySelector(".video-overlay").style.transform = `translateY(${s/5}px)`;
-  document.querySelector(".rocket").style.transform = `translateY(${-s/2}px)`;
-});
 </script>
 
 </body>
