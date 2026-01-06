@@ -15,100 +15,170 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* ===== BODY ===== */
 body {
-  background: #0b0e13;
   color: white;
+  background: radial-gradient(circle at top, #0b1d2a, #000);
   overflow-x: hidden;
 }
 
-/* NAV */
+/* ===== ÉTOILES ===== */
+.stars {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 80% 60%, white, transparent),
+    radial-gradient(2px 2px at 50% 80%, #00d4ff, transparent);
+  background-size: 900px 900px;
+  animation: starsMove 140s linear infinite;
+  z-index: -1;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: 1200px 2000px; }
+}
+
+/* ===== NAVBAR ===== */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
   padding: 16px 30px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
   z-index: 1000;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 13px;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
-/* CONTENT */
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+nav ul li a:hover {
+  color: #00d4ff;
+}
+
+/* ===== CONTENU ===== */
 .content {
-  padding: 140px 25px 80px;
+  padding: 160px 25px 140px;
   max-width: 900px;
   margin: auto;
 }
 
 h1 {
+  font-size: 44px;
   font-weight: 300;
-  font-size: 42px;
-  margin-bottom: 40px;
+  letter-spacing: 4px;
+  margin-bottom: 60px;
+  text-align: center;
 }
 
-p {
+.section {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,212,255,0.35);
+  border-radius: 18px;
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(0,212,255,0.25);
+}
+
+.section p {
   font-size: 18px;
   line-height: 1.8;
   opacity: 0.9;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-/* ===== BOUTON RETOUR ===== */
+/* ===== BOUTON RETOUR À LA BASE ===== */
 .return-base {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 14px 22px;
+  bottom: 22px;
+  right: 22px;
+  padding: 14px 24px;
   border-radius: 999px;
   background: rgba(0,0,0,0.65);
-  border: 1px solid rgba(0,212,255,0.7);
+  border: 1px solid rgba(0,212,255,0.8);
   color: #00d4ff;
   text-decoration: none;
   font-size: 13px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 25px rgba(0,212,255,0.6);
   animation: pulse 2.5s infinite;
-  z-index: 9999;
+  z-index: 2000;
 }
 
 @keyframes pulse {
   0% { box-shadow: 0 0 15px rgba(0,212,255,0.4); }
-  50% { box-shadow: 0 0 30px rgba(0,212,255,0.9); }
+  50% { box-shadow: 0 0 35px rgba(0,212,255,1); }
   100% { box-shadow: 0 0 15px rgba(0,212,255,0.4); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .section {
+    padding: 28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
+
+<!-- NAVBAR -->
 <nav>
-  <a href="index.html">CIIBTS</a>
+  <ul>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="infos.html">Infos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
 
+<!-- CONTENU -->
 <div class="content">
   <h1>Informations</h1>
 
-  <p>
-    Le <strong>CIIBTS</strong> est un centre international dédié à la convergence
-    entre la biotechnologie, l’innovation technologique et l’exploration spatiale.
-  </p>
+  <div class="section">
+    <p>
+      Le <strong>CIIBTS</strong> est un centre international dédié à la convergence
+      entre la biotechnologie, l’innovation technologique et l’exploration spatiale.
+    </p>
 
-  <p>
-    Fondé en 2025, il vise à développer des projets à fort impact scientifique,
-    médical et spatial à l’échelle mondiale.
-  </p>
+    <p>
+      Fondé en 2025, il développe des projets à fort impact scientifique,
+      médical et spatial à l’échelle internationale.
+    </p>
+
+    <p>
+      Le CIIBTS agit comme un hub stratégique réunissant chercheurs,
+      ingénieurs et institutions autour de technologies de rupture.
+    </p>
+  </div>
 </div>
 
-<a href="index.html" class="return-base">← Retour à la base</a>
+<!-- BOUTON RETOUR -->
+<a href="index.html" class="return-base">🚀 Retour à la base</a>
 
 </body>
 </html>
-
