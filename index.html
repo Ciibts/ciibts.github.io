@@ -17,10 +17,11 @@
 
 body{
   background:black;
-  overflow:hidden;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* ===== NAV ===== */
+/* ================= NAV ================= */
 nav{
   position:fixed;
   top:0;
@@ -29,7 +30,7 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.55);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
@@ -51,153 +52,249 @@ nav ul li a{
   opacity:.85;
 }
 
-/* ===== HERO ===== */
+/* BURGER */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+}
+
+.burger span{
+  width:26px;
+  height:2px;
+  background:white;
+}
+
+/* MOBILE MENU */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  transform:translateY(-100%);
+  transition:.4s;
+  z-index:999;
+}
+
+.mobile-menu a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.mobile-menu.active{transform:translateY(0);}
+
+/* ================= HERO ================= */
 header{
-  position:relative;
   height:100vh;
+  position:relative;
   overflow:hidden;
 }
 
-/* FOND */
-.space-bg{
+/* OVERLAY */
+header::before{
+  content:"";
   position:absolute;
   inset:0;
-  background:radial-gradient(circle at center,#0a1a2a,#000);
+  background:radial-gradient(circle at center,
+    rgba(0,255,255,.08),
+    rgba(0,0,0,.9));
   z-index:1;
 }
 
-/* TERRE HOLOGRAMME */
-.earth{
+/* TITRE */
+.hero-title{
   position:absolute;
-  top:50%;
+  top:18%;
   left:50%;
-  width:320px;
-  height:320px;
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  background:
-    radial-gradient(circle at 30% 30%,rgba(0,255,255,.35),rgba(0,60,80,.9));
-  box-shadow:
-    0 0 60px rgba(0,200,255,.6),
-    inset 0 0 40px rgba(0,255,255,.6);
-  animation:earthPulse 6s ease-in-out infinite;
+  transform:translateX(-50%);
+  text-align:center;
   z-index:3;
 }
 
-@keyframes earthPulse{
-  0%,100%{box-shadow:0 0 60px rgba(0,200,255,.5)}
-  50%{box-shadow:0 0 90px rgba(0,255,255,.9)}
+.hero-title h1{
+  font-size:64px;
+  font-weight:300;
+  letter-spacing:8px;
+  text-shadow:0 0 25px rgba(0,255,255,.8);
+}
+
+.hero-title p{
+  margin-top:14px;
+  font-size:16px;
+  letter-spacing:2px;
+  opacity:.85;
+  max-width:900px;
+}
+
+/* ================= HOLOGRAMME TERRE ================= */
+.holo-container{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:2;
+}
+
+.earth{
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%,
+      rgba(0,255,255,.9),
+      rgba(0,120,255,.35),
+      rgba(0,0,0,.9));
+  box-shadow:
+    0 0 40px rgba(0,255,255,.8),
+    inset 0 0 40px rgba(0,255,255,.4);
+  animation:earthRotate 18s linear infinite;
+}
+
+@keyframes earthRotate{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 /* ORBITES */
 .orbit{
   position:absolute;
-  top:50%;
-  left:50%;
   border:1px solid rgba(255,255,255,.15);
   border-radius:50%;
-  animation:rotate linear infinite;
-  z-index:2;
+  animation:spin linear infinite;
 }
 
-.orbit1{width:520px;height:520px;animation-duration:40s;}
-.orbit2{width:720px;height:720px;animation-duration:70s;}
-.orbit3{width:920px;height:920px;animation-duration:100s;}
+.orbit.one{
+  width:420px;height:420px;
+  animation-duration:30s;
+}
 
-@keyframes rotate{
-  from{transform:translate(-50%,-50%) rotate(0deg);}
-  to{transform:translate(-50%,-50%) rotate(360deg);}
+.orbit.two{
+  width:520px;height:520px;
+  animation-duration:45s;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
 /* SATELLITES */
 .satellite{
   position:absolute;
   top:50%;
-  left:100%;
-  width:12px;
-  height:12px;
+  left:50%;
+  width:10px;
+  height:10px;
+  background:#00ffff;
   border-radius:50%;
-  cursor:pointer;
+  box-shadow:0 0 15px rgba(0,255,255,1);
 }
 
-/* RAYON HOLOGRAMME */
-.satellite::before{
-  content:"";
+.sat1{transform:translate(210px,0);}
+.sat2{transform:translate(-260px,-120px);}
+.sat3{transform:translate(0,260px);}
+
+/* BOUTON */
+.hero-btn{
   position:absolute;
-  top:50%;
-  left:-240px;
-  width:240px;
-  height:2px;
-  background:linear-gradient(90deg,transparent,rgba(0,255,255,.9),transparent);
-  transform:translateY(-50%);
-  opacity:0;
-  animation:pulse 1.4s infinite;
+  bottom:12%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
 }
 
-.satellite:hover::before{opacity:1;}
-.satellite:hover{transform:scale(1.8);}
-
-@keyframes pulse{
-  0%{opacity:.2}
-  50%{opacity:1}
-  100%{opacity:.2}
+.btn{
+  padding:16px 44px;
+  border:2px solid white;
+  color:white;
+  text-decoration:none;
+  letter-spacing:2px;
+  transition:.3s;
 }
 
-/* COULEURS */
-.sat-xera{background:#00eaff;box-shadow:0 0 20px #00eaff;}
-.sat-bio{background:#00ff9d;box-shadow:0 0 20px #00ff9d;}
-.sat-eco{background:#ffd000;box-shadow:0 0 20px #ffd000;}
+.btn:hover{
+  background:white;
+  color:black;
+}
 
-/* MOBILE */
-@media(max-width:768px){
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  nav ul{display:none;}
+  .burger{display:flex;}
+
+  .hero-title h1{font-size:40px;letter-spacing:4px;}
+  .hero-title p{font-size:14px;padding:0 20px;}
+
   .earth{width:220px;height:220px;}
-  .orbit1{width:360px;height:360px;}
-  .orbit2{width:520px;height:520px;}
-  .orbit3{width:680px;height:680px;}
+  .orbit.one{width:300px;height:300px;}
+  .orbit.two{width:380px;height:380px;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="infos.html">Informations</a>
+  <a href="projets.html">Projets</a>
+  <a href="contact.html">Contact</a>
+</div>
+
 <nav>
   <div class="logo">
     <img src="logo-ciibts-transparent.png" alt="CIIBTS">
   </div>
+
   <ul>
     <li><a href="index.html">Accueil</a></li>
     <li><a href="infos.html">Informations</a></li>
     <li><a href="projets.html">Projets</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <header>
 
-  <div class="space-bg"></div>
-
-  <div class="earth"></div>
-
-  <div class="orbit orbit1">
-    <span class="satellite sat-xera" data-link="xera.html"></span>
+  <div class="hero-title">
+    <h1>CIIBTS</h1>
+    <p>Centre International de l’Innovation Biologique, Technologique et Spatial</p>
   </div>
 
-  <div class="orbit orbit2">
-    <span class="satellite sat-bio" data-link="projets.html#biotech"></span>
+  <div class="holo-container">
+    <div class="orbit one">
+      <div class="satellite sat1"></div>
+    </div>
+    <div class="orbit two">
+      <div class="satellite sat2"></div>
+      <div class="satellite sat3"></div>
+    </div>
+    <div class="earth"></div>
   </div>
 
-  <div class="orbit orbit3">
-    <span class="satellite sat-eco" data-link="projets.html#durable"></span>
+  <div class="hero-btn">
+    <a href="projets.html" class="btn">Découvrir</a>
   </div>
 
 </header>
 
 <script>
-document.querySelectorAll(".satellite").forEach(sat=>{
-  sat.addEventListener("click",()=>{
-    window.location.href = sat.dataset.link;
-  });
-});
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("active");
+}
 </script>
 
 </body>
