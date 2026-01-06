@@ -17,11 +17,10 @@
 
 body{
   background:black;
-  color:white;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
-/* ================= NAV ================= */
+/* ===== NAV ===== */
 nav{
   position:fixed;
   top:0;
@@ -30,12 +29,12 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.5);
   backdrop-filter:blur(10px);
   z-index:1000;
 }
 
-.logo img{height:42px}
+.logo img{height:42px;}
 
 nav ul{
   list-style:none;
@@ -52,227 +51,153 @@ nav ul li a{
   opacity:.85;
 }
 
-/* BURGER */
-.burger{
-  display:none;
-  flex-direction:column;
-  gap:6px;
-  cursor:pointer;
-}
-.burger span{
-  width:26px;
-  height:2px;
-  background:white;
-}
-
-/* MOBILE MENU */
-.mobile-menu{
-  position:fixed;
-  inset:0;
-  background:black;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:30px;
-  transform:translateY(-100%);
-  transition:.4s;
-  z-index:999;
-}
-.mobile-menu a{
-  color:white;
-  text-decoration:none;
-  font-size:18px;
-  letter-spacing:3px;
-}
-.mobile-menu.active{transform:translateY(0)}
-
-/* ================= HERO ================= */
-.holo-hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* ===== HERO ===== */
+header{
   position:relative;
+  height:100vh;
   overflow:hidden;
 }
 
-/* TERRE */
-.holo-earth-container{
+/* FOND */
+.space-bg{
   position:absolute;
-  width:420px;
-  height:420px;
+  inset:0;
+  background:radial-gradient(circle at center,#0a1a2a,#000);
   z-index:1;
 }
 
-.earth-hologram{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  overflow:hidden;
-  box-shadow:
-    0 0 40px rgba(0,200,255,.6),
-    0 0 120px rgba(0,200,255,.35);
-  animation:float 6s ease-in-out infinite;
-}
-
-.earth-hologram img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.85;
-  filter:hue-rotate(180deg) brightness(1.2);
-}
-
-.earth-hologram::after{
-  content:"";
+/* TERRE HOLOGRAMME */
+.earth{
   position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    transparent 45%,
-    rgba(0,255,255,.4) 50%,
-    transparent 55%
-  );
-  animation:scan 3s linear infinite;
+  top:50%;
+  left:50%;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:
+    radial-gradient(circle at 30% 30%,rgba(0,255,255,.35),rgba(0,60,80,.9));
+  box-shadow:
+    0 0 60px rgba(0,200,255,.6),
+    inset 0 0 40px rgba(0,255,255,.6);
+  animation:earthPulse 6s ease-in-out infinite;
+  z-index:3;
+}
+
+@keyframes earthPulse{
+  0%,100%{box-shadow:0 0 60px rgba(0,200,255,.5)}
+  50%{box-shadow:0 0 90px rgba(0,255,255,.9)}
 }
 
 /* ORBITES */
 .orbit{
   position:absolute;
-  inset:0;
-  border:1px solid rgba(0,200,255,.25);
+  top:50%;
+  left:50%;
+  border:1px solid rgba(255,255,255,.15);
   border-radius:50%;
   animation:rotate linear infinite;
+  z-index:2;
 }
-.orbit1{animation-duration:20s}
-.orbit2{inset:-40px;animation-duration:35s}
-.orbit3{inset:-80px;animation-duration:50s}
 
+.orbit1{width:520px;height:520px;animation-duration:40s;}
+.orbit2{width:720px;height:720px;animation-duration:70s;}
+.orbit3{width:920px;height:920px;animation-duration:100s;}
+
+@keyframes rotate{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* SATELLITES */
 .satellite{
   position:absolute;
   top:50%;
   left:100%;
-  width:10px;
-  height:10px;
-  background:#00eaff;
+  width:12px;
+  height:12px;
   border-radius:50%;
-  box-shadow:0 0 15px #00eaff;
+  cursor:pointer;
 }
 
-/* TEXTE */
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:0 20px;
+/* RAYON HOLOGRAMME */
+.satellite::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:-240px;
+  width:240px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,rgba(0,255,255,.9),transparent);
+  transform:translateY(-50%);
+  opacity:0;
+  animation:pulse 1.4s infinite;
 }
 
-.hero-content h1{
-  font-size:64px;
-  letter-spacing:6px;
-  font-weight:300;
+.satellite:hover::before{opacity:1;}
+.satellite:hover{transform:scale(1.8);}
+
+@keyframes pulse{
+  0%{opacity:.2}
+  50%{opacity:1}
+  100%{opacity:.2}
 }
 
-.hero-content p{
-  margin:20px 0 40px;
-  max-width:800px;
-  opacity:.85;
-}
+/* COULEURS */
+.sat-xera{background:#00eaff;box-shadow:0 0 20px #00eaff;}
+.sat-bio{background:#00ff9d;box-shadow:0 0 20px #00ff9d;}
+.sat-eco{background:#ffd000;box-shadow:0 0 20px #ffd000;}
 
-/* BOUTON */
-.btn{
-  padding:16px 42px;
-  border:2px solid white;
-  color:white;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  transition:.3s;
-}
-.btn:hover{
-  background:white;
-  color:black;
-}
-
-/* ANIMATIONS */
-@keyframes rotate{
-  from{transform:rotate(0)}
-  to{transform:rotate(360deg)}
-}
-@keyframes scan{
-  from{transform:translateY(-100%)}
-  to{transform:translateY(100%)}
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav ul{display:none}
-  .burger{display:flex}
-  .hero-content h1{font-size:42px}
-  .holo-earth-container{
-    width:260px;
-    height:260px;
-  }
+/* MOBILE */
+@media(max-width:768px){
+  .earth{width:220px;height:220px;}
+  .orbit1{width:360px;height:360px;}
+  .orbit2{width:520px;height:520px;}
+  .orbit3{width:680px;height:680px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Accueil</a>
-  <a href="infos.html">Informations</a>
-  <a href="projets.html">Projets</a>
-  <a href="contact.html">Contact</a>
-</div>
-
 <nav>
   <div class="logo">
     <img src="logo-ciibts-transparent.png" alt="CIIBTS">
   </div>
-
   <ul>
     <li><a href="index.html">Accueil</a></li>
     <li><a href="infos.html">Informations</a></li>
     <li><a href="projets.html">Projets</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
-  <div class="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
 </nav>
 
-<header class="holo-hero">
+<header>
 
-  <div class="holo-earth-container">
-    <div class="earth-hologram">
-      <img src="earth.png" alt="Terre hologramme">
-    </div>
+  <div class="space-bg"></div>
 
-    <div class="orbit orbit1"><span class="satellite"></span></div>
-    <div class="orbit orbit2"><span class="satellite"></span></div>
-    <div class="orbit orbit3"><span class="satellite"></span></div>
+  <div class="earth"></div>
+
+  <div class="orbit orbit1">
+    <span class="satellite sat-xera" data-link="xera.html"></span>
   </div>
 
-  <div class="hero-content">
-    <h1>CIIBTS</h1>
-    <p>Centre International pour l’Innovation Biologique, Technologique et Spatial</p>
-    <a href="projets.html" class="btn">Découvrir</a>
+  <div class="orbit orbit2">
+    <span class="satellite sat-bio" data-link="projets.html#biotech"></span>
+  </div>
+
+  <div class="orbit orbit3">
+    <span class="satellite sat-eco" data-link="projets.html#durable"></span>
   </div>
 
 </header>
 
 <script>
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("active");
-}
+document.querySelectorAll(".satellite").forEach(sat=>{
+  sat.addEventListener("click",()=>{
+    window.location.href = sat.dataset.link;
+  });
+});
 </script>
 
 </body>
