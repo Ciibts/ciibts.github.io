@@ -1,205 +1,135 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Informations – CIIBTS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Informations – CIIBTS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
 
-    body {
-      background: #1c1e22;
-      color: white;
-      min-height: 100vh;
-    }
+body {
+  background: radial-gradient(circle at top, #101820, #000);
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+}
 
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      animation: fadeDown 1s ease forwards;
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
 
-    .logo img {
-      height: 40px;
-    }
+/* CONTENT */
+.content {
+  padding: 140px 25px 100px;
+  max-width: 900px;
+  margin: auto;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
+h1 {
+  font-size: 42px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+  text-align: center;
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 2px;
-      opacity: 0.85;
-      position: relative;
-      transition: opacity 0.3s ease;
-    }
+.section {
+  margin-bottom: 60px;
+}
 
-    nav ul li a:hover {
-      opacity: 1;
-    }
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 2px;
-      background: white;
-      transition: width 0.3s ease;
-    }
+.section p {
+  font-size: 17px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* CONTENT */
-    .content {
-      padding: 160px 80px 80px;
-      max-width: 900px;
-      animation: fadeUp 1.2s ease forwards;
-    }
-
-    .content h1 {
-      font-size: 48px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      margin-bottom: 30px;
-    }
-
-    .content p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #ddd;
-    }
-
-    /* SECTION STYLE */
-    .info-block {
-      margin-top: 40px;
-      padding-left: 25px;
-      border-left: 3px solid rgba(255,255,255,0.3);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-
-      nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 25px;
-      }
-
-      .content {
-        padding: 130px 25px 50px;
-        text-align: center;
-      }
-
-      .info-block {
-        padding-left: 0;
-        border-left: none;
-      }
-
-      .content h1 {
-        font-size: 36px;
-      }
-
-      .content p {
-        font-size: 17px;
-      }
-    }
-  </style>
+/* MOBILE */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 34px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">
-    </div>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="infos.html">Informations</a></li>
-      <li><a href="contact.html">Contactez-nous</a></li>
-    </ul>
-  </nav>
+<nav>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="infos.html">Informations</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- CONTENT -->
-  <div class="content">
-    <h1>Informations</h1>
+<div class="content">
 
-    <div class="info-block">
-      <p>
-        Le <strong>CIIBTS</strong> (Centre International pour l’Innovation
-        Biologique, Technologique et Spatial) existe depuis
-        <strong>septembre 2025</strong>.
-      </p>
-    </div>
+<h1>Informations</h1>
 
-    <div class="info-block">
-      <p>
-        Fondé par <strong>Daoud Mustafa</strong>, PDG d’<strong>Orioxspace</strong>
-        et ancien directeur commercial du <strong>CNIB</strong>,
-        le CIIBTS est né d’une vision ambitieuse et internationale.
-      </p>
-    </div>
+<div class="section">
+  <h2>À propos du CIIBTS</h2>
+  <p>
+    Le <strong>CIIBTS</strong> (Centre International pour l’Innovation Biologique,
+    Technologique et Spatial) est une organisation tournée vers l’avenir,
+    combinant recherche scientifique, innovation technologique et exploration spatiale.
+  </p>
+</div>
 
-    <div class="info-block">
-      <p>
-        Porté par la passion pour la <strong>technologie</strong>,
-        l’<strong>espace</strong> et la <strong>santé</strong>,
-        le CIIBTS rassemble ces trois domaines pour développer
-        des projets innovants, durables et à fort impact.
-      </p>
-    </div>
-  </div>
+<div class="section">
+  <h2>Fondation</h2>
+  <p>
+    Fondé en <strong>2025</strong>, le CIIBTS est né d’une vision ambitieuse :
+    créer un écosystème international capable de faire converger
+    science, technologie et applications concrètes à fort impact.
+  </p>
+</div>
+
+<div class="section">
+  <h2>Domaines clés</h2>
+  <p>
+    Biotechnologie • Technologies médicales • Intelligence artificielle •
+    Systèmes spatiaux • Innovation durable
+  </p>
+</div>
+
+</div>
 
 </body>
 </html>
