@@ -15,13 +15,66 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* ===== BODY ===== */
 body {
-  background: #0b0e13;
+  background: radial-gradient(circle at top, #0b1d2a, #000);
   color: white;
+  overflow-x: hidden;
 }
 
+/* ===== ÉTOILES ===== */
+.stars {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 70% 60%, white, transparent),
+    radial-gradient(2px 2px at 50% 80%, #00d4ff, transparent);
+  background-size: 900px 900px;
+  animation: starsMove 150s linear infinite;
+  z-index: -1;
+}
+
+@keyframes starsMove {
+  from { background-position: 0 0; }
+  to { background-position: 1400px 2200px; }
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 30px;
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+nav ul li a:hover {
+  color: #00d4ff;
+}
+
+/* ===== CONTENU ===== */
 .content {
-  padding: 140px 25px 100px;
+  padding: 160px 25px 140px;
   max-width: 600px;
   margin: auto;
   text-align: center;
@@ -30,7 +83,18 @@ body {
 h1 {
   font-size: 42px;
   font-weight: 300;
+  letter-spacing: 4px;
   margin-bottom: 40px;
+}
+
+/* ===== FORMULAIRE ===== */
+form {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,212,255,0.35);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px rgba(0,212,255,0.25);
 }
 
 input, textarea {
@@ -38,53 +102,161 @@ input, textarea {
   margin-bottom: 20px;
   padding: 14px;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.25);
   color: white;
-  border-radius: 8px;
+  border-radius: 10px;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255,255,255,0.6);
 }
 
 button {
-  padding: 14px 40px;
+  padding: 14px 46px;
   background: transparent;
   border: 2px solid #00d4ff;
   color: #00d4ff;
   letter-spacing: 2px;
+  text-transform: uppercase;
   cursor: pointer;
+  border-radius: 999px;
+  transition: 0.3s;
 }
 
-/* RETOUR */
+button:hover {
+  background: #00d4ff;
+  color: black;
+}
+
+/* ===== MESSAGE SUCCÈS ===== */
+.success {
+  display: none;
+  margin-top: 40px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.success .check {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #00ff9d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0 0 35px rgba(0,255,157,0.9);
+}
+
+.success .check::after {
+  content: "✓";
+  font-size: 42px;
+  color: #00ff9d;
+}
+
+.success p {
+  margin-top: 20px;
+  letter-spacing: 2px;
+  color: #00ff9d;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== BOUTON RETOUR ===== */
 .return-base {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 14px 22px;
+  bottom: 22px;
+  right: 22px;
+  padding: 14px 24px;
   border-radius: 999px;
   background: rgba(0,0,0,0.65);
-  border: 1px solid rgba(0,212,255,0.7);
+  border: 1px solid rgba(0,212,255,0.8);
   color: #00d4ff;
   text-decoration: none;
   font-size: 13px;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
+  backdrop-filter: blur(10px);
   box-shadow: 0 0 25px rgba(0,212,255,0.6);
+  animation: pulse 2.5s infinite;
+  z-index: 2000;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px rgba(0,212,255,0.4); }
+  50% { box-shadow: 0 0 35px rgba(0,212,255,1); }
+  100% { box-shadow: 0 0 15px rgba(0,212,255,0.4); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  form {
+    padding: 28px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="infos.html">Infos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- CONTENU -->
 <div class="content">
   <h1>Contactez-nous</h1>
 
-  <form action="https://formspree.io/f/xlgdyyby" method="POST">
+  <form id="contactForm" action="https://formspree.io/f/xlgdyyby" method="POST">
     <input type="text" name="name" placeholder="Votre nom" required>
     <input type="email" name="email" placeholder="Votre email" required>
     <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
     <button type="submit">Envoyer</button>
   </form>
+
+  <div class="success" id="success">
+    <div class="check"></div>
+    <p>Message transmis avec succès</p>
+  </div>
 </div>
 
-<a href="index.html" class="return-base">← Retour à la base</a>
+<!-- RETOUR -->
+<a href="index.html" class="return-base">🚀 Retour à la base</a>
+
+<script>
+const form = document.getElementById("contactForm");
+const success = document.getElementById("success");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const response = await fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    form.style.display = "none";
+    success.style.display = "block";
+  }
+});
+</script>
 
 </body>
 </html>
