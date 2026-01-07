@@ -238,12 +238,70 @@ header{
   color:black;
 }
 
+/* ================= INSTAGRAM ================= */
+.social-orbit{
+  position:absolute;
+  bottom:40px;
+  left:40px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  z-index:6;
+}
+
+.social-text{
+  font-size:13px;
+  letter-spacing:1.5px;
+  opacity:0.8;
+}
+
+.arrow{
+  width:40px;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #00d4ff);
+  position:relative;
+}
+
+.arrow::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:-4px;
+  width:10px;
+  height:10px;
+  border-right:2px solid #00d4ff;
+  border-top:2px solid #00d4ff;
+  transform:rotate(45deg);
+}
+
+.insta-logo img{
+  width:32px;
+  filter:drop-shadow(0 0 10px rgba(0,212,255,0.9));
+  transition:0.3s;
+}
+
+.insta-logo img:hover{
+  transform:scale(1.2);
+}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   nav ul{display:none;}
   .burger{display:flex;}
   .hero-content h1{font-size:42px;}
   .holo-earth{width:240px;height:240px;}
+
+  .social-orbit{
+    left:50%;
+    transform:translateX(-50%);
+    flex-direction:column;
+  }
+
+  .arrow{
+    width:2px;
+    height:30px;
+    background:linear-gradient(180deg, transparent, #00d4ff);
+  }
 }
 </style>
 </head>
@@ -280,7 +338,6 @@ header{
 
   <div class="orbit one"></div>
   <div class="orbit two"></div>
-
   <div class="holo-earth"></div>
 
   <div class="satellite sat1" onclick="location.href='projets.html'"></div>
@@ -297,6 +354,15 @@ header{
     </div>
 
     <a href="projets.html" class="btn">Découvrir</a>
+  </div>
+
+  <!-- INSTAGRAM -->
+  <div class="social-orbit">
+    <span class="social-text">Pour suivre l’aventure depuis la Terre</span>
+    <div class="arrow"></div>
+    <a href="https://www.instagram.com/ciibts.in/" target="_blank" class="insta-logo">
+      <img src="instagram.png" alt="Instagram CIIBTS">
+    </a>
   </div>
 </header>
 
