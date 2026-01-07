@@ -19,6 +19,12 @@ body{
   background:black;
   color:white;
   overflow-x:hidden;
+  transition:0.4s;
+}
+
+/* ================= MODE ALERTE ================= */
+body.alert{
+  background:#02060a;
 }
 
 /* ================= NAV ================= */
@@ -111,7 +117,6 @@ header{
   z-index:1;
 }
 
-/* OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
@@ -119,7 +124,27 @@ header{
   z-index:2;
 }
 
-/* HOLOGRAMME TERRE */
+/* RADAR */
+.radar{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg, rgba(0,212,255,0.25), transparent 40%);
+  animation:radarSpin 6s linear infinite;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  pointer-events:none;
+}
+
+@keyframes radarSpin{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* TERRE */
 .holo-earth{
   position:absolute;
   top:50%;
@@ -132,6 +157,11 @@ header{
   transform:translate(-50%,-50%);
   animation:spin 40s linear infinite;
   z-index:3;
+}
+
+body.alert .holo-earth{
+  border-color:rgba(255,80,80,0.8);
+  box-shadow:0 0 120px rgba(255,60,60,0.9);
 }
 
 @keyframes spin{
@@ -159,6 +189,37 @@ header{
   to{transform:translate(-50%,-50%) rotate(360deg);}
 }
 
+/* ORBITE ISS */
+.iss-orbit{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:600px;
+  height:600px;
+  border:1px dashed rgba(0,212,255,0.35);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:rotate 90s linear infinite;
+  z-index:3;
+}
+
+.iss-dot{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:10px;
+  height:10px;
+  background:#00d4ff;
+  border-radius:50%;
+  box-shadow:0 0 15px rgba(0,212,255,1);
+  transform:translate(300px,0);
+}
+
+body.alert .iss-dot{
+  background:#ff3b3b;
+  box-shadow:0 0 25px rgba(255,60,60,1);
+}
+
 /* SATELLITES */
 .satellite{
   position:absolute;
@@ -169,7 +230,6 @@ header{
   background:#00d4ff;
   border-radius:50%;
   box-shadow:0 0 15px rgba(0,212,255,0.9);
-  cursor:pointer;
   z-index:4;
 }
 
@@ -202,43 +262,16 @@ header{
   opacity:0.85;
 }
 
-/* COMPTEUR */
-.mission-countdown{
-  margin-bottom:30px;
-  text-align:center;
-}
-
-.mission-label{
-  font-size:12px;
-  opacity:0.7;
-  letter-spacing:2px;
-}
-
+/* COUNTDOWN */
 .countdown{
   font-size:26px;
   font-weight:600;
   color:#00d4ff;
   text-shadow:0 0 18px rgba(0,212,255,0.9);
-  margin-top:8px;
+  margin-bottom:30px;
 }
 
-/* BOUTON */
-.btn{
-  padding:16px 42px;
-  border:2px solid white;
-  color:white;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:white;
-  color:black;
-}
-
-/* ================= INSTAGRAM ================= */
+/* INSTAGRAM */
 .social-orbit{
   position:absolute;
   bottom:40px;
@@ -251,84 +284,21 @@ header{
 
 .social-text{
   font-size:13px;
-  letter-spacing:1.5px;
   opacity:0.8;
-}
-
-.arrow{
-  width:40px;
-  height:2px;
-  background:linear-gradient(90deg, transparent, #00d4ff);
-  position:relative;
-}
-
-.arrow::after{
-  content:"";
-  position:absolute;
-  right:0;
-  top:-4px;
-  width:10px;
-  height:10px;
-  border-right:2px solid #00d4ff;
-  border-top:2px solid #00d4ff;
-  transform:rotate(45deg);
 }
 
 .insta-logo img{
   width:32px;
   filter:drop-shadow(0 0 10px rgba(0,212,255,0.9));
-  transition:0.3s;
-}
-
-.insta-logo img:hover{
-  transform:scale(1.2);
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  nav ul{display:none;}
-  .burger{display:flex;}
-  .hero-content h1{font-size:42px;}
-  .holo-earth{width:240px;height:240px;}
-
-  .social-orbit{
-    left:50%;
-    transform:translateX(-50%);
-    flex-direction:column;
-  }
-
-  .arrow{
-    width:2px;
-    height:30px;
-    background:linear-gradient(180deg, transparent, #00d4ff);
-  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Accueil</a>
-  <a href="infos.html">Informations</a>
-  <a href="projets.html">Projets</a>
-  <a href="contact.html">Contact</a>
-</div>
-
 <nav>
   <div class="logo">
-    <img src="logo-ciibts-transparent.png" alt="CIIBTS">
-  </div>
-
-  <ul>
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="infos.html">Informations</a></li>
-    <li><a href="projets.html">Projets</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-
-  <div class="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+    <img src="logo-ciibts-transparent.png">
   </div>
 </nav>
 
@@ -336,62 +306,56 @@ header{
   <div class="space-bg"></div>
   <div class="overlay"></div>
 
+  <div class="radar"></div>
   <div class="orbit one"></div>
   <div class="orbit two"></div>
+
+  <div class="iss-orbit">
+    <div class="iss-dot"></div>
+  </div>
+
   <div class="holo-earth"></div>
 
-  <div class="satellite sat1" onclick="location.href='projets.html'"></div>
-  <div class="satellite sat2" onclick="location.href='xera.html'"></div>
-  <div class="satellite sat3" onclick="location.href='projets.html'"></div>
+  <div class="satellite sat1"></div>
+  <div class="satellite sat2"></div>
+  <div class="satellite sat3"></div>
 
   <div class="hero-content">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatiale</p>
-
-    <div class="mission-countdown">
-      <span class="mission-label">MISSION XERA — LANCEMENT</span>
-      <div class="countdown" id="countdown"></div>
-    </div>
-
-    <a href="projets.html" class="btn">Découvrir</a>
+    <div class="countdown" id="countdown"></div>
   </div>
 
-  <!-- INSTAGRAM -->
   <div class="social-orbit">
     <span class="social-text">Pour suivre l’aventure depuis la Terre</span>
-    <div class="arrow"></div>
     <a href="https://www.instagram.com/ciibts.in/" target="_blank" class="insta-logo">
-      <img src="instagram.png" alt="Instagram CIIBTS">
+      <img src="instagram.png">
     </a>
   </div>
 </header>
 
 <script>
-function toggleMenu(){
-  document.getElementById("mobileMenu").classList.toggle("active");
-}
-
+/* COUNTDOWN */
 const launchDate = new Date("June 6, 2026 00:00:00").getTime();
-function updateCountdown(){
-  const now = new Date().getTime();
-  const d = launchDate - now;
+setInterval(()=>{
+  const d = launchDate - new Date().getTime();
+  if(d<0){countdown.innerHTML="MISSION LANCÉE";return;}
+  countdown.innerHTML=`T-${Math.floor(d/86400000)} JOURS`;
+},1000);
 
-  if(d < 0){
-    document.getElementById("countdown").innerHTML = "MISSION LANCÉE 🚀";
-    return;
-  }
-
-  const days = Math.floor(d / (1000*60*60*24));
-  const hours = Math.floor((d % (1000*60*60*24))/(1000*60*60));
-  const minutes = Math.floor((d % (1000*60*60))/(1000*60));
-  const seconds = Math.floor((d % (1000*60))/1000);
-
-  document.getElementById("countdown").innerHTML =
-    `T-${days} JOURS : ${hours}H ${minutes}M ${seconds}S`;
+/* ISS ALERT FRANCE */
+async function checkISS(){
+  try{
+    const r = await fetch("https://api.wheretheiss.at/v1/satellites/25544");
+    const d = await r.json();
+    if(d.latitude>42 && d.latitude<51 && d.longitude>-5 && d.longitude<9){
+      document.body.classList.add("alert");
+    }else{
+      document.body.classList.remove("alert");
+    }
+  }catch(e){}
 }
-
-setInterval(updateCountdown,1000);
-updateCountdown();
+setInterval(checkISS,5000);
 </script>
 
 </body>
