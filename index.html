@@ -134,7 +134,7 @@ header{position:relative;height:100vh;overflow:hidden;}
 }
 .btn:hover{background:white;color:black;}
 
-/* ISS LIVE */
+/* ISS LIVE BUTTON */
 .iss-live{
   position:absolute;
   bottom:30px;left:30px;
@@ -147,6 +147,54 @@ header{position:relative;height:100vh;overflow:hidden;}
   letter-spacing:2px;
   backdrop-filter:blur(10px);
   box-shadow:0 0 25px rgba(0,212,255,0.6);
+  z-index:6;
+}
+
+/* ISS MAP */
+.iss-map{
+  position:absolute;
+  bottom:30px;
+  right:30px;
+  width:220px;
+  height:140px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid rgba(0,212,255,0.6);
+  box-shadow:0 0 25px rgba(0,212,255,0.6);
+  backdrop-filter:blur(10px);
+  z-index:6;
+}
+.iss-map iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+.iss-map span{
+  position:absolute;
+  top:6px;
+  left:10px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:#00d4ff;
+}
+
+/* INSTAGRAM */
+.social-earth{
+  position:absolute;
+  bottom:90px;
+  left:30px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:6;
+}
+.social-earth span{
+  font-size:13px;
+  opacity:.8;
+}
+.social-earth img{
+  width:30px;
+  filter:drop-shadow(0 0 10px rgba(0,212,255,0.9));
 }
 
 /* RESPONSIVE */
@@ -202,7 +250,19 @@ header{position:relative;height:100vh;overflow:hidden;}
     <a href="projets.html" class="btn">Découvrir</a>
   </div>
 
-  <a href="https://isslivestream.com/" target="_blank" class="iss-live">ISS LIVE</a>
+  <a href="https://isslivenow.com/" target="_blank" class="iss-live">ISS LIVE</a>
+
+  <a href="https://isslivenow.com/" target="_blank" class="iss-map">
+    <span>ISS ORBIT</span>
+    <iframe src="https://isstracker.spaceflight.esa.int/"></iframe>
+  </a>
+
+  <div class="social-earth">
+    <span>Pour suivre toute l’actualité terrestre</span>
+    <a href="https://www.instagram.com/ciibts.in/" target="_blank">
+      <img src="instagram.png" alt="Instagram CIIBTS">
+    </a>
+  </div>
 </header>
 
 <script>
