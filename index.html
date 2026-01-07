@@ -19,12 +19,6 @@ body{
   background:black;
   color:white;
   overflow-x:hidden;
-  transition:0.4s;
-}
-
-/* ================= MODE ALERTE ================= */
-body.alert{
-  background:#02060a;
 }
 
 /* ================= NAV ================= */
@@ -41,9 +35,7 @@ nav{
   z-index:1000;
 }
 
-.logo img{
-  height:42px;
-}
+.logo img{height:42px;}
 
 nav ul{
   list-style:none;
@@ -61,18 +53,8 @@ nav ul li a{
 }
 
 /* BURGER */
-.burger{
-  display:none;
-  flex-direction:column;
-  gap:6px;
-  cursor:pointer;
-}
-
-.burger span{
-  width:26px;
-  height:2px;
-  background:white;
-}
+.burger{display:none;flex-direction:column;gap:6px;cursor:pointer;}
+.burger span{width:26px;height:2px;background:white;}
 
 .mobile-menu{
   position:fixed;
@@ -87,7 +69,6 @@ nav ul li a{
   transition:0.4s;
   z-index:999;
 }
-
 .mobile-menu a{
   color:white;
   text-decoration:none;
@@ -95,10 +76,7 @@ nav ul li a{
   letter-spacing:3px;
   text-transform:uppercase;
 }
-
-.mobile-menu.active{
-  transform:translateY(0);
-}
+.mobile-menu.active{transform:translateY(0);}
 
 /* ================= HERO ================= */
 header{
@@ -124,27 +102,7 @@ header{
   z-index:2;
 }
 
-/* RADAR */
-.radar{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:520px;
-  height:520px;
-  border-radius:50%;
-  background:conic-gradient(from 0deg, rgba(0,212,255,0.25), transparent 40%);
-  animation:radarSpin 6s linear infinite;
-  transform:translate(-50%,-50%);
-  z-index:2;
-  pointer-events:none;
-}
-
-@keyframes radarSpin{
-  from{transform:translate(-50%,-50%) rotate(0deg);}
-  to{transform:translate(-50%,-50%) rotate(360deg);}
-}
-
-/* TERRE */
+/* HOLOGRAMME TERRE */
 .holo-earth{
   position:absolute;
   top:50%;
@@ -158,84 +116,10 @@ header{
   animation:spin 40s linear infinite;
   z-index:3;
 }
-
-body.alert .holo-earth{
-  border-color:rgba(255,80,80,0.8);
-  box-shadow:0 0 120px rgba(255,60,60,0.9);
-}
-
 @keyframes spin{
   from{transform:translate(-50%,-50%) rotate(0deg);}
   to{transform:translate(-50%,-50%) rotate(360deg);}
 }
-
-/* ORBITES */
-.orbit{
-  position:absolute;
-  top:50%;
-  left:50%;
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  animation:rotate linear infinite;
-  z-index:3;
-}
-
-.orbit.one{width:420px;height:420px;animation-duration:60s;}
-.orbit.two{width:560px;height:560px;animation-duration:100s;}
-
-@keyframes rotate{
-  from{transform:translate(-50%,-50%) rotate(0deg);}
-  to{transform:translate(-50%,-50%) rotate(360deg);}
-}
-
-/* ORBITE ISS */
-.iss-orbit{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:600px;
-  height:600px;
-  border:1px dashed rgba(0,212,255,0.35);
-  border-radius:50%;
-  transform:translate(-50%,-50%);
-  animation:rotate 90s linear infinite;
-  z-index:3;
-}
-
-.iss-dot{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:10px;
-  height:10px;
-  background:#00d4ff;
-  border-radius:50%;
-  box-shadow:0 0 15px rgba(0,212,255,1);
-  transform:translate(300px,0);
-}
-
-body.alert .iss-dot{
-  background:#ff3b3b;
-  box-shadow:0 0 25px rgba(255,60,60,1);
-}
-
-/* SATELLITES */
-.satellite{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:14px;
-  height:14px;
-  background:#00d4ff;
-  border-radius:50%;
-  box-shadow:0 0 15px rgba(0,212,255,0.9);
-  z-index:4;
-}
-
-.sat1{transform:translate(210px,0);}
-.sat2{transform:translate(-260px,-140px);}
-.sat3{transform:translate(0,260px);}
 
 /* CONTENU */
 .hero-content{
@@ -262,43 +146,97 @@ body.alert .iss-dot{
   opacity:0.85;
 }
 
-/* COUNTDOWN */
-.countdown{
-  font-size:26px;
-  font-weight:600;
+/* ================= ISS HUD ================= */
+.iss-hud{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  width:280px;
+  background:rgba(0,0,0,0.7);
+  border:1px solid rgba(0,212,255,0.7);
+  border-radius:14px;
+  box-shadow:0 0 35px rgba(0,212,255,0.7);
+  backdrop-filter:blur(10px);
+  z-index:999;
+  overflow:hidden;
+  animation:hudGlow 3s infinite;
+}
+
+@keyframes hudGlow{
+  0%{box-shadow:0 0 20px rgba(0,212,255,0.4);}
+  50%{box-shadow:0 0 40px rgba(0,212,255,0.9);}
+  100%{box-shadow:0 0 20px rgba(0,212,255,0.4);}
+}
+
+.iss-hud iframe{
+  width:100%;
+  height:150px;
+  border:none;
+}
+
+.hud-info{
+  padding:12px;
+  font-size:12px;
+  letter-spacing:1.5px;
+}
+
+.hud-info span{
+  display:block;
+  margin-bottom:6px;
   color:#00d4ff;
-  text-shadow:0 0 18px rgba(0,212,255,0.9);
-  margin-bottom:30px;
 }
 
-/* INSTAGRAM */
-.social-orbit{
-  position:absolute;
-  bottom:40px;
-  left:40px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  z-index:6;
+.track-btn{
+  display:block;
+  text-align:center;
+  margin:10px;
+  padding:10px;
+  border:1px solid #00d4ff;
+  color:#00d4ff;
+  text-decoration:none;
+  letter-spacing:2px;
+  font-size:12px;
+  transition:0.3s;
+}
+.track-btn:hover{
+  background:#00d4ff;
+  color:black;
 }
 
-.social-text{
-  font-size:13px;
-  opacity:0.8;
-}
-
-.insta-logo img{
-  width:32px;
-  filter:drop-shadow(0 0 10px rgba(0,212,255,0.9));
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav ul{display:none;}
+  .burger{display:flex;}
+  .hero-content h1{font-size:42px;}
+  .holo-earth{width:240px;height:240px;}
+  .iss-hud{width:220px;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="infos.html">Informations</a>
+  <a href="projets.html">Projets</a>
+  <a href="contact.html">Contact</a>
+</div>
+
 <nav>
   <div class="logo">
-    <img src="logo-ciibts-transparent.png">
+    <img src="logo-ciibts-transparent.png" alt="CIIBTS">
+  </div>
+
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="infos.html">Informations</a></li>
+    <li><a href="projets.html">Projets</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
@@ -306,57 +244,47 @@ body.alert .iss-dot{
   <div class="space-bg"></div>
   <div class="overlay"></div>
 
-  <div class="radar"></div>
-  <div class="orbit one"></div>
-  <div class="orbit two"></div>
-
-  <div class="iss-orbit">
-    <div class="iss-dot"></div>
-  </div>
-
   <div class="holo-earth"></div>
-
-  <div class="satellite sat1"></div>
-  <div class="satellite sat2"></div>
-  <div class="satellite sat3"></div>
 
   <div class="hero-content">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatiale</p>
-    <div class="countdown" id="countdown"></div>
-  </div>
-
-  <div class="social-orbit">
-    <span class="social-text">Pour suivre l’aventure depuis la Terre</span>
-    <a href="https://www.instagram.com/ciibts.in/" target="_blank" class="insta-logo">
-      <img src="instagram.png">
-    </a>
   </div>
 </header>
 
-<script>
-/* COUNTDOWN */
-const launchDate = new Date("June 6, 2026 00:00:00").getTime();
-setInterval(()=>{
-  const d = launchDate - new Date().getTime();
-  if(d<0){countdown.innerHTML="MISSION LANCÉE";return;}
-  countdown.innerHTML=`T-${Math.floor(d/86400000)} JOURS`;
-},1000);
+<!-- 🛰️ ISS HUD -->
+<div class="iss-hud">
+  <iframe src="https://www.youtube.com/embed/21X5lGlDOfg?autoplay=1&mute=1&controls=0&rel=0"></iframe>
+  <div class="hud-info">
+    <span>ORBIT ALT : 408 KM</span>
+    <span id="coords">LAT : -- | LON : --</span>
+  </div>
+  <a href="https://spotthestation.nasa.gov/tracking_map.cfm" target="_blank" class="track-btn">
+    TRACK ISS
+  </a>
+</div>
 
-/* ISS ALERT FRANCE */
-async function checkISS(){
-  try{
-    const r = await fetch("https://api.wheretheiss.at/v1/satellites/25544");
-    const d = await r.json();
-    if(d.latitude>42 && d.latitude<51 && d.longitude>-5 && d.longitude<9){
-      document.body.classList.add("alert");
-    }else{
-      document.body.classList.remove("alert");
-    }
-  }catch(e){}
+<script>
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("active");
 }
-setInterval(checkISS,5000);
+
+/* COORDONNÉES ISS EN TEMPS RÉEL */
+async function updateISS(){
+  try{
+    const res = await fetch("https://api.wheretheiss.at/v1/satellites/25544");
+    const data = await res.json();
+    document.getElementById("coords").innerText =
+      `LAT : ${data.latitude.toFixed(2)} | LON : ${data.longitude.toFixed(2)}`;
+  }catch(e){
+    document.getElementById("coords").innerText = "SIGNAL LOST";
+  }
+}
+
+updateISS();
+setInterval(updateISS,5000);
 </script>
 
 </body>
 </html>
+
