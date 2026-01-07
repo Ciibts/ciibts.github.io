@@ -9,112 +9,152 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-body{background:black;color:white;overflow-x:hidden;transition:.4s;}
-body.alert{background:#02060a;}
+body{background:black;color:white;overflow-x:hidden;}
 
-/* ================= NAV ================= */
+/* NAV */
 nav{
   position:fixed;top:0;width:100%;
   padding:16px 30px;
   display:flex;justify-content:space-between;align-items:center;
-  background:rgba(0,0,0,.6);backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
   z-index:1000;
 }
 .logo img{height:42px;}
 nav ul{list-style:none;display:flex;gap:30px;}
 nav ul li a{
-  color:white;text-decoration:none;font-size:13px;
-  letter-spacing:2px;text-transform:uppercase;opacity:.85;
+  color:white;text-decoration:none;
+  font-size:13px;letter-spacing:2px;
+  text-transform:uppercase;opacity:0.85;
 }
 
 /* BURGER */
 .burger{display:none;flex-direction:column;gap:6px;cursor:pointer;}
 .burger span{width:26px;height:2px;background:white;}
-
 .mobile-menu{
-  position:fixed;inset:0;background:rgba(0,0,0,.95);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  position:fixed;inset:0;background:rgba(0,0,0,0.95);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
   gap:30px;transform:translateY(-100%);
   transition:.4s;z-index:999;
 }
 .mobile-menu a{
-  color:white;text-decoration:none;font-size:18px;
-  letter-spacing:3px;text-transform:uppercase;
+  color:white;text-decoration:none;
+  font-size:18px;letter-spacing:3px;
+  text-transform:uppercase;
 }
 .mobile-menu.active{transform:translateY(0);}
 
-/* ================= HERO ================= */
+/* HERO */
 header{position:relative;height:100vh;overflow:hidden;}
-
 .space-bg{
   position:absolute;inset:0;
   background:
-    radial-gradient(circle at center, rgba(0,212,255,.15), transparent 60%),
+    radial-gradient(circle at center, rgba(0,212,255,0.15), transparent 60%),
     url("https://images.unsplash.com/photo-1446776811953-b23d57bd21aa") center/cover no-repeat;
   z-index:1;
 }
-.overlay{position:absolute;inset:0;background:radial-gradient(circle,rgba(0,0,0,.3),rgba(0,0,0,.9));z-index:2;}
-
-/* RADAR */
-.radar{
-  position:absolute;top:50%;left:50%;
-  width:520px;height:520px;border-radius:50%;
-  background:conic-gradient(from 0deg, rgba(0,212,255,.25), transparent 40%);
-  animation:radar 6s linear infinite;
-  transform:translate(-50%,-50%);z-index:2;
+.overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(0,0,0,0.3),rgba(0,0,0,0.9));
+  z-index:2;
 }
-@keyframes radar{to{transform:translate(-50%,-50%) rotate(360deg);}}
 
 /* TERRE */
 .holo-earth{
   position:absolute;top:50%;left:50%;
   width:320px;height:320px;border-radius:50%;
-  border:2px solid rgba(0,212,255,.6);
-  box-shadow:0 0 80px rgba(0,212,255,.6);
+  border:2px solid rgba(0,212,255,0.6);
+  box-shadow:0 0 80px rgba(0,212,255,0.6);
   transform:translate(-50%,-50%);
   animation:spin 40s linear infinite;
   z-index:3;
 }
-body.alert .holo-earth{
-  border-color:#ff3b3b;box-shadow:0 0 120px rgba(255,60,60,.9);
+@keyframes spin{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
 }
-@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
 
 /* ORBITES */
-.orbit{position:absolute;top:50%;left:50%;border:1px solid rgba(255,255,255,.15);border-radius:50%;transform:translate(-50%,-50%);z-index:3;}
-.orbit.one{width:420px;height:420px;}
-.orbit.two{width:560px;height:560px;}
+.orbit{
+  position:absolute;top:50%;left:50%;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  animation:rotate linear infinite;
+  z-index:3;
+}
+.orbit.one{width:420px;height:420px;animation-duration:60s;}
+.orbit.two{width:560px;height:560px;animation-duration:100s;}
+@keyframes rotate{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
 
-/* ISS */
-.iss-orbit{
+/* SATELLITES */
+.satellite{
   position:absolute;top:50%;left:50%;
-  width:600px;height:600px;border:1px dashed rgba(0,212,255,.35);
-  border-radius:50%;transform:translate(-50%,-50%);
-  animation:spin 90s linear infinite;z-index:3;
+  width:14px;height:14px;
+  background:#00d4ff;border-radius:50%;
+  box-shadow:0 0 15px rgba(0,212,255,0.9);
+  cursor:pointer;z-index:4;
 }
-.iss-dot{
-  position:absolute;top:50%;left:50%;
-  width:10px;height:10px;background:#00d4ff;border-radius:50%;
-  box-shadow:0 0 15px rgba(0,212,255,1);
-  transform:translate(300px,0);
-}
-body.alert .iss-dot{background:#ff3b3b;}
+.sat1{transform:translate(210px,0);}
+.sat2{transform:translate(-260px,-140px);}
+.sat3{transform:translate(0,260px);}
 
 /* CONTENU */
 .hero-content{
-  position:relative;z-index:5;height:100%;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  position:relative;z-index:5;
+  height:100%;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
   text-align:center;padding:0 20px;
 }
-.hero-content h1{font-size:64px;font-weight:300;letter-spacing:6px;}
-.hero-content p{margin:18px 0 28px;opacity:.85;max-width:800px;}
-.countdown{font-size:26px;color:#00d4ff;text-shadow:0 0 18px rgba(0,212,255,.9);}
+.hero-content h1{
+  font-size:64px;font-weight:300;letter-spacing:6px;
+}
+.hero-content p{margin:18px 0 28px;opacity:0.85;}
+
+/* COMPTEUR */
+.countdown{
+  font-size:22px;
+  color:#00d4ff;
+  text-shadow:0 0 18px rgba(0,212,255,0.9);
+  margin-bottom:30px;
+}
+
+/* BOUTON */
+.btn{
+  padding:16px 42px;
+  border:2px solid white;
+  color:white;text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.3s;
+}
+.btn:hover{background:white;color:black;}
+
+/* ISS LIVE */
+.iss-live{
+  position:absolute;
+  bottom:30px;left:30px;
+  padding:12px 18px;
+  border-radius:999px;
+  border:1px solid rgba(0,212,255,0.7);
+  color:#00d4ff;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:2px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 25px rgba(0,212,255,0.6);
+}
 
 /* RESPONSIVE */
 @media(max-width:900px){
   nav ul{display:none;}
   .burger{display:flex;}
   .hero-content h1{font-size:42px;}
+  .holo-earth{width:240px;height:240px;}
 }
 </style>
 </head>
@@ -123,53 +163,69 @@ body.alert .iss-dot{background:#ff3b3b;}
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Accueil</a>
-  <a href="infos.html">Infos</a>
+  <a href="infos.html">Informations</a>
   <a href="projets.html">Projets</a>
   <a href="contact.html">Contact</a>
 </div>
 
 <nav>
-  <div class="logo"><img src="logo-ciibts-transparent.png"></div>
+  <div class="logo">
+    <img src="logo-ciibts-transparent.png" alt="CIIBTS">
+  </div>
   <ul>
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="infos.html">Infos</a></li>
+    <li><a href="infos.html">Informations</a></li>
     <li><a href="projets.html">Projets</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
 <header>
   <div class="space-bg"></div>
   <div class="overlay"></div>
-  <div class="radar"></div>
+
   <div class="orbit one"></div>
   <div class="orbit two"></div>
-
-  <div class="iss-orbit"><div class="iss-dot"></div></div>
   <div class="holo-earth"></div>
+
+  <div class="satellite sat1" onclick="location.href='projets.html'"></div>
+  <div class="satellite sat2" onclick="location.href='xera.html'"></div>
+  <div class="satellite sat3" onclick="location.href='projets.html'"></div>
 
   <div class="hero-content">
     <h1>CIIBTS</h1>
     <p>Centre International pour l’Innovation Biologique, Technologique et Spatiale</p>
     <div class="countdown" id="countdown"></div>
+    <a href="projets.html" class="btn">Découvrir</a>
   </div>
+
+  <a href="https://isslivestream.com/" target="_blank" class="iss-live">ISS LIVE</a>
 </header>
 
 <script>
-function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("active");}
-
-const launch=new Date("June 6, 2026").getTime();
-setInterval(()=>{countdown.innerHTML="T-"+Math.floor((launch-Date.now())/86400000)+" JOURS";},1000);
-
-async function issAlert(){
-  const r=await fetch("https://api.wheretheiss.at/v1/satellites/25544");
-  const d=await r.json();
-  document.body.classList.toggle("alert",d.latitude>42&&d.latitude<51&&d.longitude>-5&&d.longitude<9);
+function toggleMenu(){
+  document.getElementById("mobileMenu").classList.toggle("active");
 }
-setInterval(issAlert,5000);
+
+const launchDate = new Date("June 6, 2026 00:00:00").getTime();
+function updateCountdown(){
+  const now = new Date().getTime();
+  const d = launchDate - now;
+
+  const days = Math.floor(d / (1000*60*60*24));
+  const hours = Math.floor((d % (1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((d % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((d % (1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML =
+    `T-${days} JOURS · ${hours}H ${minutes}M ${seconds}S`;
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
 </script>
 
 </body>
 </html>
-
